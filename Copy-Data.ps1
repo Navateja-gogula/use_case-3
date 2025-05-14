@@ -23,10 +23,10 @@ function Insert-Row($connectionString, $query) {
 
 # Connection strings
 $localConn = "Server=10.128.0.16,1433;Database=aspnet_DB;User Id=sa;Password=P@ssword@123;"
-$remoteConn = "Server=34.170.77.150;Database=testdb;User Id=sqlserver;Password=P@ssword@123;"
+$remoteConn = "Server=34.170.77.150;Database=aspnet_DB;User Id=sqlserver;Password=P@ssword@123;"
 
 Write-Host "Fetching data from local SQL Server..."
-$data = Execute-Query -connectionString $localConn -query "SELECT user_id, user_name, user_email FROM asp_user"
+$data = Execute-Query -connectionString $localConn -query "SELECT user_id, user_name, user_email FROM dbo.asp_user"
 
 foreach ($row in $data) {
     $query = "INSERT INTO asp_user (user_id, user_name, user_email) VALUES ('$($row.user_id)', '$($row.user_name)', '$($row.user_email)')"
