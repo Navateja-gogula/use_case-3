@@ -29,7 +29,7 @@ Write-Host "Fetching data from local SQL Server..."
 $data = Execute-Query -connectionString $localConn -query "SELECT user_id, user_name, user_email FROM asp_user"
 
 foreach ($row in $data) {
-    $query = "INSERT INTO users (user_id, user_name, user_email) VALUES ('$($row.user_id)', '$($row.user_name)', '$($row.user_email)')"
+    $query = "INSERT INTO asp_user (user_id, user_name, user_email) VALUES ('$($row.user_id)', '$($row.user_name)', '$($row.user_email)')"
     Insert-Row -connectionString $remoteConn -query $query
 }
 
