@@ -26,11 +26,11 @@ $localConn = "Server=10.128.0.16,1433;Database=aspnet_DB;User Id=sa;Password=P@s
 $remoteConn = "Server=34.170.77.150;Database=testdb;User Id=sqlserver;Password=P@ssword@123;"
 
 Write-Host "Fetching data from local SQL Server..."
-$data = Execute-Query -connectionString $localConn -query "SELECT id, user_name, user_email FROM asp_user"
+$data = Execute-Query -connectionString $localConn -query "SELECT user_id, user_name, user_email FROM asp_user"
 
 foreach ($row in $data) {
-    $query = "INSERT INTO users (id, user_name, user_email) VALUES ('$($row.id)', '$($row.user_name)', '$($row.user_email)')"
+    $query = "INSERT INTO users (user_id, user_name, user_email) VALUES ('$($row.user_id)', '$($row.user_name)', '$($row.user_email)')"
     Insert-Row -connectionString $remoteConn -query $query
 }
 
-Write-Host "Data copied successfully."
+Write-Host "✅ Data copied successfully."
