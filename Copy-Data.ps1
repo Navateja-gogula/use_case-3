@@ -33,4 +33,4 @@ foreach ($row in $data) {
     Insert-Row -connectionString $remoteConn -query $query
 }
 
-Write-Host "✅ Data copied successfully."
+Write-Host " Data copied successfully."
